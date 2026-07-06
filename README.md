@@ -53,7 +53,7 @@ counts + coords + barcodes (MatrixMarket + CSV); R writes per-spot proportion CS
 Python reads them back. No shared-object gymnastics, fully reproducible across the
 language boundary.
 
-## Reference annotation — an honest note
+## Reference annotation 
 The original scRNA repo's clustering notebook had lost its Harmony step, and its cell
 types were keyed to *hardcoded leiden cluster numbers* (unstable across re-runs). Rather
 than risk a silent mis-label, the reference here reproduces the same pipeline
@@ -160,7 +160,7 @@ resolution (several cells), not single-cell contact.
 ![Spatial domains](figures/partB_spatial_domains.png)
 ![Tumor-immune infiltration by subtype](figures/partB_tumor_immune_by_subtype.png)
 
-## Limitations (read this)
+## Limitations 
 - Deconvolution returns **proportions, not ground-truth cell identity** — a spot's
   malignant proportion is a mixture estimate, not a cell count.
 - The reference has **no normal-epithelial type**, so pathologist "normal gland/duct"
