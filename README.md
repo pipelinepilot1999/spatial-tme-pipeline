@@ -3,7 +3,7 @@
 **Reference-based deconvolution of breast cancer Visium sections, validated against
 pathologist annotations.** The capstone of a three-part breast-cancer through-line.
 
-📄 **[Full methodology & results report → REPORT.md](REPORT.md)**
+**[Full methodology & results report → REPORT.md](REPORT.md)**
 
 
 ![Deconvolved composition of 6 breast cancer Visium sections](figures/hero_composition.png)
