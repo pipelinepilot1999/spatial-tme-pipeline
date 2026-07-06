@@ -358,8 +358,9 @@ subtype."
 
 ## 10. Reproducibility
 
-Scripts run in order `01`→`07`. Data (regenerable) is git-ignored; download GSE161529 from
-GEO and Wu et al. from Zenodo 4739739, then run the pipeline. Key artifacts:
+Data (regenerable) is git-ignored. Run `download.sh` to fetch the Wu et al. Visium data
+(Zenodo 4739739) and print the scRNA-reference (GSE161529) provenance, then run scripts
+`01`→`08` in order. Key artifacts:
 `reference_annotated.h5ad`, `reference_cluster_evidence.csv`, `rctd_output/*`,
 `spotlight_output/*`, `validation_summary.txt`, `partB/*`, `partB_summary.txt`, and the
 figures. Environments: `spatial-r` (R 4.5.3), `scrna` / `spatial` (Python).

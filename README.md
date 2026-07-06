@@ -113,6 +113,7 @@ Figures: `hero_composition.png` (tissue colored by composition), `composition_vs
 
 ## Pipeline
 ```
+download.sh                     # fetch all inputs (Wu Visium from Zenodo 4739739; scRNA ref provenance)
 scripts/01_build_reference.py   # scRNA reference (raw counts + 7 marker-based cell types)
 scripts/02_prep_visium.py       # load 6 Visium sections + pathology + coords; export R handoff
 scripts/03_run_rctd.R           # RCTD deconvolution (primary)  -> per-spot proportions
