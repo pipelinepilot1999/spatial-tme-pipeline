@@ -18,8 +18,8 @@ B = stromal. The spatial "where" that bulk and dissociated single-cell cannot re
 
 Bulk found the signature by averaging; scRNA localized it to malignant epithelium and
 proved malignancy by CNV; **spatial restores the "where"** — the resolution neither
-bulk nor dissociated single-cell can provide. Part B (niche analysis with squidpy)
-builds on these proportions to characterize the tumor–immune boundary by subtype.
+bulk nor dissociated single-cell can provide. Part B (niche analysis with squidpy) builds on these proportions and shows the tumor–immune
+architecture differs by subtype (TNBC infiltrated, ER+ excluded).
 
 ## What this does (Part A)
 
@@ -114,11 +114,45 @@ scripts/03_run_rctd.R           # RCTD deconvolution (primary)  -> per-spot prop
 scripts/04_run_spotlight.R      # SPOTlight cross-check          -> per-spot proportions
 scripts/05_validate.py          # concordance vs pathology + honest failure probes
 scripts/06_figures.py           # hero composition figure
+scripts/07_niche_analysis.py    # Part B: neighborhood enrichment, spatial domains, tumor-immune boundary
 ```
 
 ## Environments
 - `spatial-r` — R 4.5.3, `bioconductor-spacexr 1.2.0`, `bioconductor-spotlight 1.14.0`
 - `scrna` / `spatial` — Python (scanpy, anndata; squidpy for Part B)
+
+## Part B: spatial niche analysis (squidpy)
+
+With per-spot composition in hand, Part B asks **where** the compartments sit relative to
+each other and whether the tumor–immune architecture differs by subtype.
+
+**Compartments are spatially organized, and tumor vs immune are segregated.** Neighborhood
+enrichment shows every compartment self-clusters into patches (diagonal z = 20–64 across
+sections), and the malignant–immune pair is *negatively* enriched in all 6 sections
+(z = −1 to −73) — tumor and immune form distinct neighborhoods rather than intermixing at
+spot resolution (a compartmentalized TME). (`figures/partB_nhood_enrichment.png`)
+
+**Six recurrent spatial domains** emerge from the composition (KMeans): tumor core
+(malignant 0.78), tumor–stroma (0.63/0.27), tumor–immune interface (0.53/0.35), immune hub
+(immune 0.59), stroma (0.56), and a mixed niche. (`figures/partB_spatial_domains.png`)
+
+**Tumor–immune boundary differs by subtype — the through-line closes.** At tumor-dominant
+spots, the immune proportion of neighboring spots is significantly higher in **TNBC**
+(median 0.176, n=8,142) than **ER+** (median 0.054, n=3,190; Mann–Whitney TNBC>ER+ p≈0).
+This recovers, *spatially*, the clinical picture of TNBC as the more immune-infiltrated
+("hot") subtype and ER+ as "cold" (`figures/partB_tumor_immune_by_subtype.png`). Bulk found
+the ER+/TNBC signature; scRNA localized it to malignant epithelium and proved malignancy by
+CNV; **spatial shows the tumor–immune architecture itself differs by subtype** — the "where"
+that neither prior stage could provide.
+
+*Part B limitations:* dominant-compartment labels simplify true per-spot mixtures; only 2
+ER+ sections limits subtype generalization; "segregation" is measured at 55 µm spot
+resolution (several cells), not single-cell contact.
+
+
+![Neighborhood enrichment by section](figures/partB_nhood_enrichment.png)
+![Spatial domains](figures/partB_spatial_domains.png)
+![Tumor-immune infiltration by subtype](figures/partB_tumor_immune_by_subtype.png)
 
 ## Limitations (read this)
 - Deconvolution returns **proportions, not ground-truth cell identity** — a spot's
