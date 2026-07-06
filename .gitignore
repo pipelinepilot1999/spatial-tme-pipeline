@@ -1,0 +1,10 @@
+# Large regenerable data (rebuild via scripts/ + download from GEO/Zenodo)
+data/
+# Python / R noise
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.Rhistory
+*.log
+.DS_Store
+.claude/

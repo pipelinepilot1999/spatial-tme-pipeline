@@ -1,0 +1,12 @@
+name: spatial-r
+channels:
+  - defaults
+dependencies:
+  - r-data.table
+  - r-matrix
+  - r-base=4.5
+  - r-devtools
+  - bioconductor-spotlight=1.14.0
+  - r-ggplot2
+  - bioconductor-spacexr=1.2.0
+prefix: /home/ubuntu/miniconda3/envs/spatial-r
