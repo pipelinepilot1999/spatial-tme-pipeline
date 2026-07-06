@@ -186,12 +186,23 @@ stromal 5%). Cluster labels are consistent with data-driven top genes (e.g. COL1
 Fibroblast; CD3D → T cell; MZB1/JCHAIN → Plasma; TYROBP/AIF1 → Myeloid; KRT14/KRT17 → TNBC
 tumor; GATA3/TFF3 → ER+ tumor; COL4A1/A2M → Endothelial).
 
+
+![scRNA reference UMAP colored by the 7 cell types](figures/reference_umap_celltypes.png)
+*Reference UMAP (31,265 cells) colored by assigned cell type.*
+
+![Canonical markers by assigned cell type](figures/reference_marker_dotplot.png)
+*Annotation basis: each cell type expresses its canonical markers — the evidence behind the marker-enrichment labels.*
+
 ### 5.2 Deconvolution sanity — subtype discrimination
 
 RCTD cleanly separates the malignant subtypes using subtype-specific reference profiles:
 in the TNBC section 1142243F, mean TNBC-tumor = 0.55 vs ER+-tumor = 0.02; in the ER+
 section CID4535, ER+-tumor = 0.60 vs TNBC-tumor = 0.01. Row sums = 1.0 (proper
 proportions).
+
+
+![Deconvolved composition of the six sections](figures/hero_composition.png)
+*Each spot colored by composition (R=malignant, G=immune, B=stromal). TNBC sections are red-dominant, ER+ sections likewise, with green/blue immune and stromal structure.*
 
 ### 5.3 Validation against pathology (15,608 annotated spots)
 
@@ -212,6 +223,16 @@ proportions).
   compartment is. SPOTlight is noisier and does not resolve the ER+/TNBC subtype (a known
   accuracy gap), so RCTD is the primary estimate.
 
+
+![Malignant proportion by pathology label](figures/malignant_by_pathology.png)
+*Deconvolved malignant proportion rises with the cancer content of the pathology label.*
+
+![Composition vs pathologist annotation](figures/composition_vs_pathology.png)
+*Top: RCTD composition; bottom: pathologist map (red=cancer, green=stroma, blue=immune).*
+
+![RCTD vs SPOTlight cross-check](figures/rctd_vs_spotlight.png)
+*Independent-method agreement on per-spot malignant proportion.*
+
 ### 5.4 Part B — spatial niches
 
 - **Compartmentalization.** Every compartment self-clusters into spatial patches (diagonal
@@ -228,6 +249,16 @@ proportions).
   margins are substantially more immune-infiltrated than ER+.
 
 ---
+
+
+![Neighborhood enrichment by section](figures/partB_nhood_enrichment.png)
+*Compartment co-localization (red) vs segregation (blue); malignant–immune is negative in all sections.*
+
+![Spatial domains](figures/partB_spatial_domains.png)
+*Six recurrent composition-niches mapped back onto each section.*
+
+![Tumor–immune infiltration by subtype](figures/partB_tumor_immune_by_subtype.png)
+*Neighbor immune proportion at tumor spots: TNBC >> ER+ (the hot/cold contrast).*
 
 ## 6. Discussion
 

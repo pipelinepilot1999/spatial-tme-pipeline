@@ -62,6 +62,9 @@ than risk a silent mis-label, the reference here reproduces the same pipeline
 across clusters — a self-validating, renumbering-robust method). The per-cluster evidence
 is saved to `data/processed/reference_cluster_evidence.csv`.
 
+![scRNA reference UMAP by cell type](figures/reference_umap_celltypes.png)
+![Canonical markers by cell type](figures/reference_marker_dotplot.png)
+
 Cell types: `ER+ tumor`, `TNBC tumor`, `T cell`, `Myeloid`, `Plasma cell`, `Fibroblast`,
 `Endothelial` (grouped into malignant / immune / stromal compartments for validation).
 
